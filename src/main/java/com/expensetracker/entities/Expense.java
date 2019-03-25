@@ -28,4 +28,8 @@ public class Expense {
     @Column(name = "date")
     @Temporal(TemporalType.DATE)
     private Date date; /* only month is going to be retrieved out of this date */
+
+    @ManyToOne(fetch = FetchType.LAZY) /// late on need to evaluate proper fetch data type
+    @JoinColumn(name = "budgetid")
+    private Budget assignedBudget;
 }

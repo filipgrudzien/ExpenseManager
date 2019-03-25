@@ -5,6 +5,8 @@ import org.hibernate.validator.constraints.URL;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
@@ -38,5 +40,9 @@ public class User {
 
     @Column(name = "homeland")
     private String homeland;
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true) /// late on need to evaluate proper fetch data type
+    @JoinColumn(name = "userid")
+    List<Budget> listOfBudgets = new ArrayList<>();
 
 }
