@@ -3,6 +3,8 @@ package com.expensetracker.entities;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Data
@@ -19,7 +21,9 @@ public class Expense {
     private int budgetid;
 
     @Column(name = "pricevalue")
-    private float pricevalue;
+    @NotNull(message = "Total price field cannot remain null!")
+    @NotEmpty(message = "Total price field cannot remain blank!")
+    private String pricevalue; /* type changed to String, later on there is a need to get sum of all prices (converting->summing) */
 
     @Column(name = "category")
     private String category;

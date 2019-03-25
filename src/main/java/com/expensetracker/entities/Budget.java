@@ -3,6 +3,8 @@ package com.expensetracker.entities;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -21,10 +23,12 @@ public class Budget {
     private int userid; /* foreign key connecting with user table, later to-do */
 
     @Column(name = "money")
-    private float money; /* later on, might considering change type to string */
+    @NotEmpty(message = "Money field cannot remain blank!")
+    private String money; /* type changed to String, later on there is a need to get sum of all prices (converting->summing) */
 
     //https://www.baeldung.com/hibernate-date-time
     @Column(name = "timeperiod")
+    @NotNull(message = "Date field cannot remain null!")
     @Temporal(TemporalType.DATE)
     private Date timeperiod; /* only month and year is going to be retrieved out of this date */
 
