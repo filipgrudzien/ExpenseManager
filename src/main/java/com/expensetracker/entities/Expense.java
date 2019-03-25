@@ -17,8 +17,8 @@ public class Expense {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int expenseid;
 
-    @Column(name = "budgetid")
-    private int budgetid;
+    @Column(name = "budgetid_fk")
+    private int budgetid_fk;
 
     @Column(name = "pricevalue")
     @NotNull(message = "Total price field cannot remain null!")

@@ -24,21 +24,18 @@ public class User {
     private int userid;
 
     @Column(name = "login", unique = true)
-    @NotNull(message = "Login field cannot remain null!")
     @NotEmpty(message = "Login field cannot remain blank!")
     @UniqueUserLogin(message = "Such login already exist!")
     private String login;
 
     @Column(name = "password")
     @Size(min = 8, max = 20)
-    @NotNull(message = "Password field cannot remain null!")
     @NotEmpty(message = "Password field cannot remain blank!")
     private String password;
 
     @Email
     @Column(name = "email", unique = true)
     @UniqueUserEmail(message = "Such email already exist!")
-    @NotNull(message = "Email field cannot remain null!")
     @NotEmpty(message = "Email field cannot remain blank!")
     private String email;
 
@@ -56,8 +53,8 @@ public class User {
     @Column(name = "homeland")
     private String homeland;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true) /// late on need to evaluate proper fetch data type
-    @JoinColumn(name = "userid")
-    List<Budget> listOfBudgets = new ArrayList<>();
+   /* @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true) /// late on need to evaluate proper fetch data type
+    @JoinColumn(name = "userid_fk")
+    List<Budget> listOfBudgets = new ArrayList<>();*/
 
 }

@@ -1,0 +1,92 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css" href="/main.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+          integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>main-page</title>
+</head>
+<body class="body-color">
+
+<div id="wrap">
+    <div id="main" class="container clear-top">
+        <div class="text-center row">
+            <div class="offset-sm-2 offset-md-2 offset-lg-2"></div>
+            <div class="edit-margin text-center">
+                <p class="action-subtitles">Edit profile:</p>
+            </div>
+            <div class="usercols col-sm-8 col-md-8 col-lg-8">
+                <div class="input-group text-center">
+                    <form action="#" th:action="@{/user/submitacc}" class="form-field" th:object="${user}" method="post">
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Login(*)</span>
+                            </div>
+                            <input type="text" class="form-control" th:field="*{login}">
+                        </div>
+
+                        <div class="validators rounded">
+                            <p th:if="${#fields.hasErrors('login')}" th:errors="*{login}">Login error</p>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Password(*)</span>
+                            </div>
+                            <input type="password" class="form-control" th:field="*{password}">
+                        </div>
+
+                        <div class="validators rounded">
+                            <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password error</p>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Email(*)</span>
+                            </div>
+                            <input type="text" class="form-control" th:field="*{email}">
+                        </div>
+
+                        <div class="validators rounded">
+                            <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email error</p>
+                        </div>
+
+                        <input class="updatebutton btn btn-primary" type="submit" value="Create"/>
+
+                    </form>
+                </div>
+            </div>
+            <div class="offset-sm-2 offset-md-2 offset-lg-2"></div>
+        </div>
+    </div>
+</div>
+
+
+<footer class="page-footer font-small text-center updowncolors">
+    <div class="text-center centred-content">
+        <p class="footer-font socialtitle">Social media links:</p>
+        <a class="btn-lg btn-so social" type="button" role="button"
+           href="https://stackoverflow.com/users/4930803/thecember"><i
+                class="for-buttons fab fa-stack-overflow"></i></a>
+        <a class="btn-lg btn-git social" type="button" role="button" href="https://github.com/theCember"><i
+                class="for-buttons fab fa-github"></i></a>
+        <a class="btn-lg btn-li social" type="button" role="button" href="http://www.linkedin.com/in/filip-grudzien"><i
+                class="for-buttons fab fa-linkedin-in"></i></a>
+    </div>
+    <div class="footer-copyright text-center py-3">
+        <p class="footer-font">© 2019 Copyright: Filip Grudzień.</p>
+    </div>
+</footer>
+
+
+</body>
+</html>

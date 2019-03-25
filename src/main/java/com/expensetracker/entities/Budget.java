@@ -19,8 +19,8 @@ public class Budget {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int budgetid;
 
-    @Column(name = "userid")
-    private int userid; /* foreign key connecting with user table, later to-do */
+    @Column(name = "userid_fk")
+    private int userid_fk; /* foreign key connecting with user table, later to-do */
 
     @Column(name = "money")
     @NotEmpty(message = "Money field cannot remain blank!")
@@ -33,10 +33,10 @@ public class Budget {
     private Date timeperiod; /* only month and year is going to be retrieved out of this date */
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true) /// late on need to evaluate proper fetch data type
-    @JoinColumn(name = "budgetid")
+    @JoinColumn(name = "budgetid_fk")
     private List<Expense> listOfAssignedExpenses = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.LAZY) /// late on need to evaluate proper fetch data type
-    @JoinColumn(name = "budgetid")
+    @JoinColumn(name = "userid")
     private User assignedUser;
 }

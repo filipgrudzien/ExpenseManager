@@ -1,6 +1,7 @@
 package com.expensetracker.constraints;
 
 import com.expensetracker.repositories.UserRepository;
+import com.expensetracker.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.validation.ConstraintValidator;
@@ -9,7 +10,7 @@ import javax.validation.ConstraintValidatorContext;
 public class UniqueUserLoginValidator implements ConstraintValidator<UniqueUserLogin,String> {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserService userService;
 
     @Override
     public void initialize(UniqueUserLogin constraintAnnotation) {
@@ -18,9 +19,14 @@ public class UniqueUserLoginValidator implements ConstraintValidator<UniqueUserL
 
     @Override
     public boolean isValid(String login, ConstraintValidatorContext context) {
-        if(userRepository == null){
+        if(userService.checkIfUserRepositoryIsNull() == true){
             return true;
         }
-        return userRepository.findByLogin(login) == null;
+
+        if(userService.findUserWithSpecificLogin(login) == true){
+            return true;
+        } else {
+            return false;
+        }
     }
 }
