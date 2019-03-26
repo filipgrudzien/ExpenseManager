@@ -21,9 +21,10 @@ public class MainController {
         if(userService.getCreatorStatus()==true){
             actionStatus.successfulUserCreation();
             userService.setCreatorStatus(false);
+            model.addAttribute("status", actionStatus);
+        }else{
+            model.addAttribute("status", new ActionStatus());
         }
-        model.addAttribute("status", actionStatus);
-        actionStatus.resetStatus();
         return "index";
     }
 }

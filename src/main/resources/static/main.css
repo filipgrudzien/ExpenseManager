@@ -77,3 +77,7 @@
 .validators {
     background: #e66465;
 }
+
+.successful-panel {
+    background: #32cd32 !important;
+}

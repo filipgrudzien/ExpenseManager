@@ -1,0 +1,95 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css" href="/main.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+          integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>main-page</title>
+</head>
+<body class="body-color">
+
+<div id="wrap">
+    <div id="main" class="container clear-top">
+
+        <!-- https://www.iconexperience.com/g_collection/icons/?icon=wallet , nice icons -->
+        <div class="text-center row">
+            <div class="appimgdisplay col-sm-2 col-md-2 col-lg-2">
+                <img class="appimg" src="https://d1nhio0ox7pgb.cloudfront.net/_img/g_collection_png/standard/256x256/wallet.png">
+            </div>
+            <div class="appnamedisplay centred-content col-sm-8 col-md-8 col-lg-8">
+                <p class="appname">Welcome to your expenses manager app!</p>
+            </div>
+            <div class="appimgdisplay col-sm-2 col-md-2 col-lg-2">
+                <img class="appimg" src="https://d1nhio0ox7pgb.cloudfront.net/_img/g_collection_png/standard/256x256/wallet.png">
+            </div>
+        </div>
+        <div class="text-center row">
+            <div class="col-sm-2 col-md-2 col-lg-2"></div>
+            <div class="col-sm-8 col-md-8 col-lg-8 justify-content-center appnamedisplay row result-panel rounded shadow">
+                <p class="appname">What's expense manager?</p>
+                <p>
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                    when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                    It has survived not only five centuries, but also the leap into electronic typesetting,
+                    remaining essentially unchanged. It was popularised in the 1960s with the release of
+                    Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
+                    software like Aldus PageMaker including versions of Lorem Ipsum.
+                </p>
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2"></div>
+        </div>
+        <div class="text-center row">
+            <div class="col-sm-2 col-md-2 col-lg-2"></div>
+            <div class="col-sm-8 col-md-8 col-lg-8 justify-content-center appnamedisplay row result-panel rounded shadow">
+                <p class="appname">Having problem with managing your budget?</p>
+                <p class="appname">You can solve it with us!</p>
+                <p>
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                    when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                    It has survived not only five centuries, but also the leap into electronic typesetting,
+                    remaining essentially unchanged. It was popularised in the 1960s with the release of
+                    Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
+                    software like Aldus PageMaker including versions of Lorem Ipsum.
+                </p>
+                <a class="btn-success btn-lg btn-git social" type="button" role="button" th:href="@{user/createacc}">Create account<i
+                        class="fas fa-plus"></i></a>
+                <a class="btn-primary btn-lg btn-li social" type="button" role="button" th:href="@{user/signin}">Sign in<i
+                        class="fas fa-sign-in-alt"></i></a>
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2"></div>
+        </div>
+
+
+    </div>
+</div>
+
+
+<footer class="page-footer font-small text-center updowncolors">
+    <div class="text-center centred-content">
+        <p class="footer-font socialtitle">Social media links:</p>
+        <a class="btn-lg btn-so social" type="button" role="button"
+           href="https://stackoverflow.com/users/4930803/thecember"><i
+                class="for-buttons fab fa-stack-overflow"></i></a>
+        <a class="btn-lg btn-git social" type="button" role="button" href="https://github.com/theCember"><i
+                class="for-buttons fab fa-github"></i></a>
+        <a class="btn-lg btn-li social" type="button" role="button" href="http://www.linkedin.com/in/filip-grudzien"><i
+                class="for-buttons fab fa-linkedin-in"></i></a>
+    </div>
+    <div class="footer-copyright text-center py-3">
+        <p class="footer-font">© 2019 Copyright: Filip Grudzień.</p>
+    </div>
+</footer>
+
+
+</body>
+</html>

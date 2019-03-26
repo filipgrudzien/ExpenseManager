@@ -9,7 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.jws.WebParam;
 import javax.validation.Valid;
 
 @Controller
@@ -29,23 +31,24 @@ public class UserController {
     }
 
     @RequestMapping("/submitacc")
-    public String submitCreationForm(@Valid User user, Errors errors, Model model) {
+    public ModelAndView submitCreationForm(@Valid User user, Errors errors, Model model) {
+
+        ModelAndView mav = new ModelAndView();
 
         if(errors.hasErrors()){
-            model.addAttribute("user", user);
-            return "user-creator";
+            mav.addObject("user", user);
+            mav.setViewName("user-creator");
+            return mav;
         }
 
         userService.insertOrUpdatePerson(user);
-
-        return "redirect:/";
-        // eventually might add bean class to control successful creation to display pop-up "user added successfully"
-        // in that case, this method need to be type "ModelAndView"
+        mav.setViewName("redirect:/");
+        return mav;
     }
 
     @RequestMapping("/signin")
     public String showUserSignInView(){
-        return "user-signin";
+        return "sign-in";
     }
 
     @RequestMapping("/showall")
@@ -54,20 +57,3 @@ public class UserController {
         return "all-users";
     }
 }
-
-/*
-@RequestMapping("/submitacc")
-    public String submitCreationForm(@Valid User user, Errors errors, Model model) {
-
-        if(errors.hasErrors()){
-            model.addAttribute("user", user);
-            return "user-creator";
-        }
-
-        userService.insertOrUpdatePerson(user);
-
-        return "redirect:/";
-        // eventually might add bean class to control successful creation to display pop-up "user added successfully"
-        // in that case, this method need to be type "ModelAndView"
-    }
-* */
