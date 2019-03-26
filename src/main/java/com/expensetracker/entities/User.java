@@ -8,7 +8,6 @@ import org.hibernate.validator.constraints.URL;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
@@ -53,8 +52,8 @@ public class User {
     @Column(name = "homeland")
     private String homeland;
 
-   /* @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true) /// late on need to evaluate proper fetch data type
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true) /// late on need to evaluate proper fetch data type
     @JoinColumn(name = "userid_fk")
-    List<Budget> listOfBudgets = new ArrayList<>();*/
+    List<Budget> listOfBudgets = new ArrayList<>();
 
 }

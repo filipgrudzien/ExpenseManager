@@ -13,12 +13,14 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+    private boolean creatorStatus = false;
+
     public List<User> getAllUsers() {
         return (userRepository.findAll());
     }
 
     public void insertOrUpdatePerson(User user) {
-        System.out.println(user);
+        setCreatorStatus(true);
         userRepository.save(user);
     }
 
@@ -44,7 +46,11 @@ public class UserService {
         }
     }
 
-    public int getAllUsersNumber() {
-        return userRepository.findAll().size();
+    public boolean getCreatorStatus(){
+        return this.creatorStatus;
+    }
+
+    public void setCreatorStatus(boolean value){
+        this.creatorStatus = value;
     }
 }

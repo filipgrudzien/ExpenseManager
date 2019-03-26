@@ -1,5 +1,6 @@
 package com.expensetracker;
 
+import com.expensetracker.entities.ActionStatus;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -19,6 +20,11 @@ public class Application {
 	@Bean
 	public ModelMapper modelMapper() {
 		return new ModelMapper();
+	}
+
+	@Bean
+	ActionStatus actionStatus() {
+		return new ActionStatus();
 	}
 
 	public static void main(String[] args) {

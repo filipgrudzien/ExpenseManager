@@ -31,6 +31,13 @@
                     <img class="appimg" src="https://d1nhio0ox7pgb.cloudfront.net/_img/g_collection_png/standard/256x256/wallet.png">
                 </div>
             </div>
+            <div th:if="${status.actionStatus != null}" class="text-center row">
+                <div class="col-sm-2 col-md-2 col-lg-2"></div>
+                <div class="centred-content col-sm-8 col-md-8 col-lg-8">
+                    <p th:text="${status.actionStatus}"></p>
+                </div>
+                <div class="col-sm-2 col-md-2 col-lg-2"></div>
+            </div>
             <div class="text-center row">
                 <div class="col-sm-2 col-md-2 col-lg-2"></div>
                 <div class="col-sm-8 col-md-8 col-lg-8 justify-content-center appnamedisplay row result-panel rounded shadow">
