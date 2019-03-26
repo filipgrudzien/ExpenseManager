@@ -51,6 +51,12 @@ public class UserController {
     public String showUserSignInView(){
         return "user-signin";
     }
+
+    @RequestMapping("/showall")
+    public String showAllUsersList(Model model){
+        model.addAttribute("users", userService.getAllUsers());
+        return "all-users";
+    }
 }
 /*
     @RequestMapping(value = "/add")

@@ -7,26 +7,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-public class UniqueUserLoginValidator implements ConstraintValidator<UniqueUserLogin,String> {
+public class UniqueUserLoginValidator implements ConstraintValidator<UniqueUserLogin, String> {
 
     @Autowired
     private UserService userService;
 
     @Override
     public void initialize(UniqueUserLogin constraintAnnotation) {
-
     }
 
     @Override
     public boolean isValid(String login, ConstraintValidatorContext context) {
-        if(userService.checkIfUserRepositoryIsNull() == true){
+        if (userService == null) {
             return true;
         }
-
-        if(userService.findUserWithSpecificLogin(login) == true){
-            return true;
-        } else {
-            return false;
-        }
+        return userService.findUserWithSpecificLogin(login);
     }
 }

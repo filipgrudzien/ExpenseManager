@@ -13,39 +13,38 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public void insertOrUpdatePerson(User user){
+    public List<User> getAllUsers() {
+        return (userRepository.findAll());
+    }
+
+    public void insertOrUpdatePerson(User user) {
         System.out.println(user);
         userRepository.save(user);
     }
 
-    public boolean findUserWithSpecificEmail(String email){
-        if(this.userRepository.findByEmail(email)==null){
+    public boolean findUserWithSpecificEmail(String email) {
+        if (userRepository == null) {
             return true;
-        }else{
-            return false;
         }
-    }
-    public boolean findUserWithSpecificLogin(String login){
-        if(this.userRepository.findByLogin(login)==null){
+        if (userRepository.findByEmail(email) == null) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
 
-    public boolean checkIfUserRepositoryIsNull(){
-        if(this.userRepository == null){
+    public boolean findUserWithSpecificLogin(String login) {
+        if (userRepository == null) {
             return true;
-        }else{
+        }
+        if (userRepository.findByLogin(login) == null) {
+            return true;
+        } else {
             return false;
         }
     }
 
-    public int getAllUsersNumber(){
+    public int getAllUsersNumber() {
         return userRepository.findAll().size();
-    }
-
-    public UserRepository getUserRepository() {
-        return userRepository;
     }
 }
