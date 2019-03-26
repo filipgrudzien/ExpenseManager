@@ -46,10 +46,10 @@ public class UserController {
         return mav;
     }
 
-    @RequestMapping("/signin")
+    /*@RequestMapping("/signin")
     public String showUserSignInView(){
         return "sign-in";
-    }
+    }*/
 
     @RequestMapping("/showall")
     public String showAllUsersList(Model model){

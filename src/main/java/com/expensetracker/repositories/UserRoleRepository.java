@@ -1,10 +1,9 @@
 package com.expensetracker.repositories;
 
+import com.expensetracker.entities.UserRole;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import javax.management.relation.Role;
+public interface UserRoleRepository extends JpaRepository<UserRole, Integer> {
 
-public interface UserRoleRepository extends JpaRepository<Role, Integer> {
-
-    Role findByRole(String role);
+    UserRole findByRole(String role);
 }

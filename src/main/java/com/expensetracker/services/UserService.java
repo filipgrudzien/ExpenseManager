@@ -1,10 +1,16 @@
 package com.expensetracker.services;
 
 import com.expensetracker.entities.User;
+import com.expensetracker.entities.UserRole;
 import com.expensetracker.repositories.UserRepository;
+import com.expensetracker.repositories.UserRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.management.relation.Role;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 @Service
@@ -12,6 +18,12 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private UserRoleRepository userRoleRepository;
+
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     private boolean creatorStatus = false;
 
@@ -21,6 +33,10 @@ public class UserService {
 
     public void insertOrUpdatePerson(User user) {
         setCreatorStatus(true);
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        user.setActive(1);
+        UserRole userRole = userRoleRepository.findByRole("ADMIN");
+        user.setRoles(new HashSet<UserRole>(Arrays.asList(userRole)));
         userRepository.save(user);
     }
 
@@ -44,6 +60,11 @@ public class UserService {
         } else {
             return false;
         }
+    }
+
+
+    public User findUserByEmail(String email){
+        return (userRepository.findByEmail(email));
     }
 
     public boolean getCreatorStatus(){

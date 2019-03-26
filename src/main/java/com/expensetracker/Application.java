@@ -9,28 +9,29 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @SpringBootApplication
 @EnableAutoConfiguration
 @EnableWebMvc
-@ComponentScan(basePackages={"com.expensetracker"})
-@EnableJpaRepositories(basePackages="com.expensetracker.repositories")
-@EntityScan(basePackages="com.expensetracker.entities")
+@ComponentScan(basePackages = {"com.expensetracker"})
+@EnableJpaRepositories(basePackages = "com.expensetracker.repositories")
+@EntityScan(basePackages = "com.expensetracker.entities")
 public class Application {
 
-	@Bean
-	public ModelMapper modelMapper() {
-		return new ModelMapper();
-	}
+    @Bean
+    public ModelMapper modelMapper() {
+        return new ModelMapper();
+    }
 
-	@Bean
-	ActionStatus actionStatus() {
-		return new ActionStatus();
-	}
+    @Bean
+    ActionStatus actionStatus() {
+        return new ActionStatus();
+    }
 
-	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
 
 }
