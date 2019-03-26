@@ -11,6 +11,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @Entity
@@ -52,8 +53,15 @@ public class User {
     @Column(name = "homeland")
     private String homeland;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true) /// late on need to evaluate proper fetch data type
-    @JoinColumn(name = "userid_fk")
+    @Column(name = "active")
+    private int active;
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true) /// later on need to evaluate proper fetch data type
+    @JoinColumn(name = "userid_fk") // if join tables/columns works wrong look up at joining role table
     List<Budget> listOfBudgets = new ArrayList<>();
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name =  "user_role", joinColumns = @JoinColumn(name = "userid"), inverseJoinColumns = @JoinColumn(name = "roleid"))
+    private Set<UserRole> roles;
 
 }
