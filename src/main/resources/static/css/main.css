@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Permanent+Marker|Cinzel:700|Kalam|Tinos|Varela+Round|Bree+Serif');
+
+.appnamedisplay {
+    margin: 35px 0px 0px 0px;
+}
+
+.updowncolors {
+    background-color: #343a40;
+}
+
+.centred-content {
+    position: relative;
+    text-align: center;
+    align-items: center;
+    display: inline-block;
+    justify-content: center;
+}
+
+.footer-font {
+    color: white;
+}
+
+.socialtitle{
+    padding-top: 15px;
+    font-size: 22px;
+    font-family: 'Source Code Pro', monospace;
+}
+
+.social {
+    margin: 0 auto;
+    padding: 15px;
+}
+
+.for-buttons {
+    color: black;
+}
+
+.appname {
+    font-family: 'Bree Serif', serif;
+    margin: 0px;
+    font-size: 40px;
+}
+
+.appimgdisplay {
+    padding: 15px 0px 0px 0px !important;
+    margin: 25px 0px 0px 0px;
+}
+
+.appimg {
+    width: 100px;
+    height: 100px;
+}
+
+.result-panel {
+    background: #e9ecef;
+    padding: 0px 0px 5px 0px;
+    margin: 20px;
+}
+
+.edit-margin {
+    margin: 15px 0px 20px 0px;
+}
+
+.usercols {
+    margin: 50px 0px 0px 0px;
+    padding: 0px 10px 0px 10px;
+}
+
+.action-subtitles {
+    font-size: 40px;
+    font-family: 'Varela Round', sans-serif;
+    margin: 0px;
+    font-weight: bold;
+    display: block;
+}
+
+.validators {
+    background: #e66465;
+}
+
+.successful-panel {
+    background: #32cd32 !important;
+}
