@@ -61,7 +61,7 @@ public class User {
     List<Budget> listOfBudgets = new ArrayList<>();
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name =  "user_role", joinColumns = @JoinColumn(name = "userid"), inverseJoinColumns = @JoinColumn(name = "roleid"))
+    @JoinTable(name =  "merged_user_role", joinColumns = @JoinColumn(name = "userid"), inverseJoinColumns = @JoinColumn(name = "roleid"))
     private Set<UserRole> roles;
 
 }

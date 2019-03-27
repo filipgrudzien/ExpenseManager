@@ -35,7 +35,7 @@ public class MainController {
     @RequestMapping("/login")
     public ModelAndView showLoginView(){
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("sign-in");
+        modelAndView.setViewName("login");
         return modelAndView;
     }
 
