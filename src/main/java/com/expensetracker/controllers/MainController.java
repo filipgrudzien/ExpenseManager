@@ -1,7 +1,6 @@
 package com.expensetracker.controllers;
 
 import com.expensetracker.entities.ActionStatus;
-import com.expensetracker.entities.User;
 import com.expensetracker.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;

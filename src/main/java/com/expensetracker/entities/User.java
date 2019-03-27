@@ -10,8 +10,8 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 
 @Data
 @Entity
@@ -21,7 +21,7 @@ public class User {
     @Id
     @Column(name = "userid")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int userid;
+    private Long userid;
 
     @Column(name = "login", unique = true)
     @NotEmpty(message = "Login field cannot remain blank!")
@@ -53,15 +53,21 @@ public class User {
     @Column(name = "homeland")
     private String homeland;
 
-    @Column(name = "active")
-    private int active;
+    @Column(name = "enabled")
+    private int enabled;//might consider changing type to boolean
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true) /// later on need to evaluate proper fetch data type
-    @JoinColumn(name = "userid_fk") // if join tables/columns works wrong look up at joining role table
-    List<Budget> listOfBudgets = new ArrayList<>();
+    @Column(name = "token_expired")
+    private int token_expired;//might consider changing type to boolean
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    /// later on need to evaluate proper fetch data type
+    @JoinColumn(name = "userid_fk") // if join tables/columns works in a wrong way, look up at joining role table
+            List<Budget> listOfBudgets = new ArrayList<>();
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name =  "merged_user_role", joinColumns = @JoinColumn(name = "userid"), inverseJoinColumns = @JoinColumn(name = "roleid"))
-    private Set<UserRole> roles;
+    @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "userid"), inverseJoinColumns = @JoinColumn(name = "roleid"))
+    private Collection<Role> roles;
+
+    ///https://www.baeldung.com/security-spring
 
 }

@@ -1,14 +1,11 @@
 package com.expensetracker.services;
 
-import com.expensetracker.entities.User;
-import com.expensetracker.entities.UserRole;
 import com.expensetracker.repositories.UserRepository;
 import com.expensetracker.repositories.UserRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.management.relation.Role;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
