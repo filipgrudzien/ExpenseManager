@@ -29,7 +29,7 @@ public class User {
     private String login;
 
     @Column(name = "password")
-    @Size(min = 8, max = 20)
+    @Size(min = 8, max = 200)
     @NotEmpty(message = "Password field cannot remain blank!")
     private String password;
 

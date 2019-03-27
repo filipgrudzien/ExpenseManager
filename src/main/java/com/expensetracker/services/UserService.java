@@ -31,11 +31,21 @@ public class UserService {
         return (userRepository.findAll());
     }
 
-    public void insertOrUpdatePerson(User user) {
+    /// right now this function remain to add ADMIN
+    /*public void insertOrUpdatePerson(User user) {
         setCreatorStatus(true);
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setActive(1);
         UserRole userRole = userRoleRepository.findByRole("ADMIN");
+        user.setRoles(new HashSet<UserRole>(Arrays.asList(userRole)));
+        userRepository.save(user);
+    }*/
+
+    public void insertOrUpdatePerson(User user) {
+        setCreatorStatus(true);
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        user.setActive(2);
+        UserRole userRole = userRoleRepository.findByRole("USER");
         user.setRoles(new HashSet<UserRole>(Arrays.asList(userRole)));
         userRepository.save(user);
     }

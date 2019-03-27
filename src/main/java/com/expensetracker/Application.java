@@ -83,10 +83,10 @@ public class Application extends WebSecurityConfigurerAdapter implements WebMvcC
 
         http.
                 authorizeRequests()
-                .antMatchers("/","/resources/**", "/static/**", "/css/**", "/js/**", "/images/**", "/templates/**").permitAll()
-                .antMatchers("/**.css", "/**.js").permitAll()
+                //.antMatchers("/","/resources/**", "/static/**", "/css/**", "/js/**", "/images/**", "/templates/**").permitAll()
+                //.antMatchers("/**.css", "/**.js").permitAll()
                 .antMatchers("/login").permitAll()
-                .antMatchers("/registration").permitAll()
+                .antMatchers("user/createacc", "user/submitacc").permitAll()
                 .antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest()
                 .authenticated().and().csrf().disable().formLogin()
                 .loginPage("/login").failureUrl("/login?error=true")

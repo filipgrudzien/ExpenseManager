@@ -46,11 +46,7 @@ public class UserController {
         return mav;
     }
 
-    /*@RequestMapping("/signin")
-    public String showUserSignInView(){
-        return "sign-in";
-    }*/
-
+    /// helper controller
     @RequestMapping("/showall")
     public String showAllUsersList(Model model){
         model.addAttribute("users", userService.getAllUsers());
