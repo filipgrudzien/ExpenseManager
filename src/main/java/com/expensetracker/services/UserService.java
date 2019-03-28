@@ -1,23 +1,27 @@
 package com.expensetracker.services;
 
+import com.expensetracker.DTO.UserDTO;
+import com.expensetracker.entities.Role;
+import com.expensetracker.entities.User;
 import com.expensetracker.repositories.UserRepository;
-import com.expensetracker.repositories.UserRoleRepository;
+import com.expensetracker.repositories.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
 @Service
-public class UserService {
+public class UserService implements UserServiceImpl {
 
     @Autowired
     private UserRepository userRepository;
 
     @Autowired
-    private UserRoleRepository userRoleRepository;
+    private RoleRepository userRoleRepository;
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -26,6 +30,32 @@ public class UserService {
 
     public List<User> getAllUsers() {
         return (userRepository.findAll());
+    }
+
+    @Transactional
+    @Override
+    public User registerNewUserAccount(UserDTO accountDTO) throws EmailExistxception {
+
+        if (emailExist(accountDTO.getEmail())) {
+            throw new EmailExistsException(
+                    "There is an account with that email adress: "
+                            + accountDTO.getEmail());
+        }
+        User user = new User();
+        user.setLogin(accountDTO.getLogin());
+        user.setPassword(accountDTO.getPassword());
+        user.setEmail(accountDTO.getEmail());
+        user.setRoles(Arrays.asList("ROLE_USER"));
+        return userRepository.save(user);
+    }
+
+    private boolean emailExist(String email) {
+
+        User user = userRepository.findByEmail(email);
+        if (user != null) {
+            return true;
+        }
+        return false;
     }
 
     /// right now this function remain to add ADMIN
@@ -41,9 +71,9 @@ public class UserService {
     public void insertOrUpdatePerson(User user) {
         setCreatorStatus(true);
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        user.setActive(2);
-        UserRole userRole = userRoleRepository.findByRole("USER");
-        user.setRoles(new HashSet<UserRole>(Arrays.asList(userRole)));
+        user.setEnabled(2);
+        Role userRole = userRoleRepository.findByRole("USER");
+        user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
         userRepository.save(user);
     }
 
@@ -70,15 +100,15 @@ public class UserService {
     }
 
 
-    public User findUserByEmail(String email){
+    public User findUserByEmail(String email) {
         return (userRepository.findByEmail(email));
     }
 
-    public boolean getCreatorStatus(){
+    public boolean getCreatorStatus() {
         return this.creatorStatus;
     }
 
-    public void setCreatorStatus(boolean value){
+    public void setCreatorStatus(boolean value) {
         this.creatorStatus = value;
     }
 }

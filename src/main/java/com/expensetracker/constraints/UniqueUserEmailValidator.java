@@ -13,9 +13,7 @@ public class UniqueUserEmailValidator implements ConstraintValidator<UniqueUserE
     private UserService userService;
 
     @Override
-    public void initialize(UniqueUserEmail constraintAnnotation) {
-
-    }
+    public void initialize(UniqueUserEmail constraintAnnotation) { }
 
     @Override
     public boolean isValid(String email, ConstraintValidatorContext context) {

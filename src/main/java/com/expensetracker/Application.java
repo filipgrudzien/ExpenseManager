@@ -1,5 +1,6 @@
 package com.expensetracker;
 
+import com.expensetracker.config.SecurityCfg;
 import com.expensetracker.entities.ActionStatus;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 import javax.sql.DataSource;
 
@@ -33,7 +35,7 @@ import javax.sql.DataSource;
 @EnableJpaRepositories(basePackages = "com.expensetracker.repositories")
 @EntityScan(basePackages = "com.expensetracker.entities")
 @EnableWebSecurity
-public class Application extends WebSecurityConfigurerAdapter implements WebMvcConfigurer {
+public class Application extends AbstractAnnotationConfigDispatcherServletInitializer implements WebMvcConfigurer {
 
     @Bean
     public ModelMapper modelMapper() {
@@ -111,6 +113,10 @@ public class Application extends WebSecurityConfigurerAdapter implements WebMvcC
         web
                 .ignoring()
                 .antMatchers("/", "/**.css", "/**.js", "/resources/**", "/static/**", "/css/**", "/js/**", "/images/**", "/templates/**").anyRequest();
+    }
+
+    protected Class<?>[] getRootConfigClasses() {
+        return new Class[] {SecurityCfg.class};
     }
 
     public static void main(String[] args) {
